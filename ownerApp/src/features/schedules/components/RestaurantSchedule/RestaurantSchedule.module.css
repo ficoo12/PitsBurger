@@ -1,0 +1,267 @@
+/* Drawn like the Excel plans (design system: ScheduleTable, ShiftCell). The
+   grid stays square and continuous: no rounded corners, shadows or gaps. */
+
+.section {
+  min-width: 0;
+}
+
+/* The white card around a table, as wide as the page. It scrolls sideways
+   when the page is narrower than the table's minimum width. */
+.scroll {
+  padding: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+/* Fills the card. The restaurant and name columns keep their width; the seven
+   day columns share the rest equally, never narrower than schedule-day-width. */
+.table {
+  width: 100%;
+  min-width: calc(
+    var(--schedule-restaurant-width) + var(--schedule-name-width) + 7 * var(--schedule-day-width)
+  );
+  border: 1px solid var(--schedule-frame);
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--schedule-ink);
+  font-family: var(--font-sans);
+}
+
+.restaurantColumn {
+  width: var(--schedule-restaurant-width);
+}
+
+.nameColumn {
+  width: var(--schedule-name-width);
+}
+
+.table th,
+.table td {
+  height: var(--schedule-row-height);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--schedule-grid);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Two header rows: the weekday, then the date. White cells, dark rules. */
+.table thead th,
+.table thead td {
+  background: var(--surface);
+  border-color: var(--schedule-frame);
+  letter-spacing: 0.02em;
+}
+
+.table .weekday {
+  text-transform: uppercase;
+}
+
+.closedLabel {
+  display: block;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+/* The merged restaurant column. Its gradient (the restaurant's colour, Early
+   to Late) is set on the element. */
+.table .restaurant {
+  padding: var(--space-2);
+  border-color: var(--schedule-frame);
+  background: var(--surface-sunken);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* An employee's name, white without a zone. The zone's colour (its Early
+   shade) is set on the element. */
+.table .name {
+  background: var(--surface);
+}
+
+.meta {
+  display: block;
+  font-weight: 500;
+}
+
+/* The name, and the note's dot after it when there is a note. */
+.nameLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nameLine .nameButton {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The name is a button that opens the remove window; it looks like plain text. */
+.nameButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.nameButton:hover {
+  text-decoration: underline;
+}
+
+.nameButton:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+/* A zone's last row: "+ Add employee" in the zone's colour, the days white. */
+.table .addCell {
+  background: var(--surface);
+}
+
+.addButton {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--schedule-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  text-decoration: underline;
+}
+
+.addButton:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+.table .addDays {
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* The zone whose panel is open: this is where people can be dropped. */
+.table .addDays[data-active] {
+  outline: 2px dashed var(--border-control);
+  outline-offset: -4px;
+}
+
+.table .addDays[data-dropping] {
+  background: var(--brand-red-tint);
+  color: var(--brand-red-hover);
+  outline-color: var(--brand-red);
+}
+
+/* A day: black without a shift, grey on a closed day without a shift, else
+   the zone's colour in the shift's shade (--cell-fill, set on the element).
+   Without a zone, or for a shift the restaurant doesn't know, it stays white. */
+.table .cell {
+  background: var(--surface);
+}
+
+.table .cell[data-fill] {
+  background: var(--cell-fill);
+}
+
+.table .cell[data-shift="none"] {
+  background: var(--shift-none);
+}
+
+.table .cell[data-shift="closed"] {
+  background: var(--shift-closed);
+}
+
+/* An availability hint: the day keeps its black (grey when closed), with a
+   dashed frame and the shift's name in the zone's colour in the shift's shade
+   (--hint-colour, set on the element). White without a zone. */
+.table .cell[data-hint] {
+  --hint-colour: var(--ink-inverse);
+  color: var(--hint-colour);
+}
+
+.cell[data-hint] .cellButton {
+  border: 2px dashed var(--hint-colour);
+}
+
+/* On a grey closed day the shift colours don't stand out (as low as 1.1:1),
+   so the hint becomes a tag in the shift's exact colour with black text
+   (at least 4.5:1) and a black dashed frame (6.7:1 on the grey). Square like
+   the rest of the grid. */
+.cell[data-shift="closed"][data-hint] .cellButton {
+  border: 0;
+}
+
+.cell[data-shift="closed"][data-hint] .hintLabel {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0 var(--space-1);
+  border: 2px dashed var(--schedule-ink);
+  background: var(--hint-colour);
+  color: var(--schedule-ink);
+}
+
+/* A cell that opens the editor: the button fills the whole cell and keeps
+   its colour, so the grid looks the same as before. */
+.table .cell:has(.cellButton) {
+  padding: 0;
+}
+
+.cellButton {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: var(--schedule-row-height);
+  padding: var(--space-1) var(--space-2);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.cellButton:hover {
+  box-shadow: inset 0 0 0 2px var(--schedule-frame);
+}
+
+/* On black and grey empty cells a dark frame wouldn't show. */
+.cell[data-shift="none"] .cellButton:hover,
+.cell[data-shift="closed"] .cellButton:hover {
+  box-shadow: inset 0 0 0 2px var(--ink-inverse);
+}
+
+.cellButton:focus-visible,
+.cellButton[aria-expanded="true"] {
+  outline: 2px solid var(--brand-red);
+  outline-offset: -2px;
+}
+
+/* For the heading, which only screen readers need. */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

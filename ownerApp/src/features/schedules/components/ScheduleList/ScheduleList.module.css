@@ -1,0 +1,7 @@
+/* The restaurants' schedules, one under another. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}

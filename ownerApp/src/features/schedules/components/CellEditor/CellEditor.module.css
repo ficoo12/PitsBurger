@@ -1,0 +1,151 @@
+/* A card that floats under the clicked cell (floating-ui places it). */
+.popover {
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 300px;
+  max-width: calc(100vw - 2 * var(--space-2));
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-menu);
+  color: var(--ink);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-muted);
+}
+
+/* The shift from the person's availability, under the day. */
+.available {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.shifts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: var(--space-1);
+  padding: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* A shift to pick: a radio button drawn as a chip in the zone × shift colour. */
+.chip {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  min-width: 72px;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--schedule-grid);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--schedule-ink);
+  cursor: pointer;
+}
+
+.chip:has(.radio:checked) {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 1px var(--brand-red);
+}
+
+.chip:has(.radio:focus-visible) {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+.chip:has(.radio:disabled) {
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* The radio itself stays in the page for the keyboard and screen readers. */
+.radio {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.chipName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.chipTimes {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.error {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--brand-red-hover);
+}
+
+.times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* Clear sits on the left, away from Save. */
+.clear {
+  margin-right: auto;
+}

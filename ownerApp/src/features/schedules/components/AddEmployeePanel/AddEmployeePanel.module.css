@@ -1,0 +1,76 @@
+.hint,
+.empty {
+  margin: 0 0 var(--space-4);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One person, in the zone's colour like their row will be. Draggable. */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--schedule-grid);
+  border-radius: var(--radius-md);
+  color: var(--schedule-ink);
+  cursor: grab;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.positions {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.add {
+  flex: none;
+  height: var(--control-height-sm);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--brand-black);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--brand-black);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add:hover {
+  background: var(--surface-sunken);
+}
+
+.add:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}

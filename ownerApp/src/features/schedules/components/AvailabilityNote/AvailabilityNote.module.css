@@ -1,0 +1,70 @@
+/* The dot: a red circle with a white ring, so it shows on every zone colour.
+   The button around it is bigger than the dot, to be easy to hit. */
+.dot {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+.dot:hover::before,
+.dot[aria-expanded="true"]::before {
+  width: 10px;
+  height: 10px;
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 1px;
+}
+
+/* A card that floats under the dot, like the cell editor. */
+.popover {
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 240px;
+  max-width: calc(100vw - 2 * var(--space-2));
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-menu);
+  color: var(--ink);
+}
+
+.popover:focus {
+  outline: none;
+}
+
+.title {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
