@@ -1,0 +1,62 @@
+/* The schedule illustration on the right half of AuthLayout. */
+
+.art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-12) 0 var(--space-12) var(--space-12);
+  overflow: hidden;
+  background: var(--surface-page);
+  border-left: 1px solid var(--border);
+}
+
+.art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.day {
+  font: 700 12px/16px var(--font-sans);
+  letter-spacing: 0.02em;
+  fill: var(--schedule-ink);
+}
+
+.header {
+  fill: var(--surface);
+  stroke: var(--schedule-frame);
+  stroke-width: 1;
+}
+
+.red {
+  fill: var(--brand-red);
+}
+.off {
+  fill: var(--shift-none);
+}
+.svc {
+  fill: var(--palette-red-early);
+}
+.svc2 {
+  fill: var(--palette-red-late);
+}
+.kit {
+  fill: var(--palette-yellow-early);
+}
+.kit2 {
+  fill: var(--palette-yellow-full);
+}
+.drv {
+  fill: var(--palette-green-early);
+}
+.drv2 {
+  fill: var(--palette-green-late);
+}
+
+@media (max-width: 960px) {
+  .art {
+    display: none;
+  }
+}

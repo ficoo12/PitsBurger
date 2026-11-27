@@ -1,0 +1,126 @@
+/* Laid out like the text fields: a small label, the control, a hint or error. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: var(--space-1);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  width: 64px;
+  cursor: pointer;
+}
+
+/* The radio stays in the page for keyboards and screen readers, unseen. */
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+/* Square like the schedule's grid; the stripes are the shades it is drawn in. */
+.swatch {
+  display: flex;
+  width: 48px;
+  height: 32px;
+  overflow: hidden;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-sm);
+}
+
+.stripe {
+  flex: 1;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink);
+  text-align: center;
+}
+
+/* The picked swatch: a black ring with a white gap, so it shows on any hue. */
+.input:checked + .swatch {
+  box-shadow:
+    0 0 0 2px var(--surface),
+    0 0 0 4px var(--ink);
+}
+
+.input:checked ~ .label {
+  font-weight: 700;
+}
+
+.input:focus-visible + .swatch {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 4px;
+}
+
+/* Another record's colour: faded and crossed out, with a tooltip saying whose. */
+.option[data-taken] {
+  cursor: not-allowed;
+}
+
+.option[data-taken] .swatch {
+  position: relative;
+  opacity: 0.35;
+}
+
+.option[data-taken] .swatch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 1px),
+    var(--ink) calc(50% - 1px),
+    var(--ink) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+}
+
+.option[data-taken] .label {
+  color: var(--ink-muted);
+}
+
+.invalid {
+  border-color: var(--brand-red);
+}
+
+.hint,
+.error {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.hint {
+  color: var(--ink-muted);
+}
+
+.error {
+  color: var(--brand-red-hover);
+}

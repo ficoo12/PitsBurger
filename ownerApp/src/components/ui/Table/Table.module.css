@@ -1,0 +1,161 @@
+/* The look every list table shares (employees, contracts, shifts, positions,
+   restaurants): the name column takes the free space on the left, every other
+   column and the row's buttons sit at the right end of the row. */
+/* Around every list table: on a screen too narrow for the table (a long
+   username, say), only the table scrolls sideways, not the whole page.
+   Positioned, so the visually hidden headers (position: absolute) are
+   clipped with the table instead of widening the page. */
+.scroll {
+  position: relative;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+}
+
+.table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.table thead th {
+  background: var(--surface-sunken);
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.table .name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* A name with its colour chip in front of it. */
+.withChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Every column after the name: as narrow as its content and right-aligned,
+   so it sits next to the row's buttons at the right end of the table. */
+.table .trailing {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* On narrow screens long headers ("Max. hours per week") may wrap, so they
+   don't push the table wider than the page. */
+@media (max-width: 960px) {
+  .table thead .trailing {
+    white-space: normal;
+  }
+}
+
+/* The row's buttons at the right end of the row. */
+.table .actions {
+  width: 1%;
+  padding-left: var(--space-8);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.actions > * + * {
+  margin-left: var(--space-4);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.action:hover {
+  color: var(--ink);
+}
+
+.danger {
+  color: var(--brand-red);
+}
+
+.danger:hover {
+  color: var(--brand-red-hover);
+}
+
+.action:focus-visible,
+.add:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* For the header of the actions column, which only screen readers need. */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The row that links to the create form: light grey so it stands apart from the white table. */
+.emptyRow td {
+  background: var(--surface-page);
+  transition: background-color 0.12s;
+}
+
+.emptyRow:hover td {
+  background: var(--surface-sunken);
+}
+
+.add {
+  font: inherit;
+  font-weight: 500;
+  color: var(--brand-red);
+  text-decoration: none;
+}
+
+.add:hover {
+  color: var(--brand-red-hover);
+}
+
+/* Phones and small tablets: less room around the cells and before the row's
+   buttons, so the tables fit a 375px screen without scrolling. */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: var(--space-3);
+  }
+
+  .table .actions {
+    padding-left: var(--space-4);
+  }
+}

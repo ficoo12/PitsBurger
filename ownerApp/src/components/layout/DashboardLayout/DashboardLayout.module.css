@@ -1,0 +1,151 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--space-8);
+  width: var(--sidebar-width);
+  height: 100vh;
+  padding: var(--space-6) var(--space-4);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: var(--control-height);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--ink-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.link:hover {
+  background: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.active,
+.active:hover {
+  background: var(--brand-red-tint);
+  color: var(--brand-red);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.user {
+  padding: 0 var(--space-3);
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-8);
+}
+
+.content h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* The small-screen bar with the logo and the menu button; hidden on wider screens. */
+.topBar {
+  display: none;
+}
+
+/* 48px tap target. */
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.menuButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.menuButton:hover {
+  background: var(--surface-sunken);
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+/* Phones and small tablets: the sidebar makes way for the top bar and its
+   drawer (NavDrawer), and the page gets the full width. */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .topBar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    height: 64px;
+    padding: 0 var(--space-2) 0 var(--space-4);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .content {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .content h1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}

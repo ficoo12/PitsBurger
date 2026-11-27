@@ -1,0 +1,27 @@
+/* The message, then (in development) the error itself, then the reload button. */
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+}
+
+.error > div {
+  align-self: stretch;
+}
+
+/* Only in development: the thrown error's message. */
+.details {
+  align-self: stretch;
+  margin: 0;
+  padding: var(--space-3);
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font-size: 12px;
+  line-height: 16px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

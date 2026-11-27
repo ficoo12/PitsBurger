@@ -1,0 +1,106 @@
+/* Design tokens from the design system (tokens.json). Everything else reads them with var(--name). */
+
+:root {
+  /* Colour */
+  --brand-red: #d0121b;
+  --brand-red-hover: #a80e15;
+  --brand-red-tint: #fdeced;
+  --brand-black: #111111;
+  --surface-page: #f5f4f2;
+  --surface: #ffffff;
+  --surface-sunken: #efedea;
+  --border: #e2dfdb;
+  --border-control: #8a8580;
+  --ink: #111111;
+  --ink-muted: #5d5854;
+  --ink-inverse: #ffffff;
+  --success: #18733a;
+  --success-tint: #e6f4ea;
+
+  /* The schedule palette: a position's or a restaurant's hue (backend enum
+     palette_colour), each in a shift's three shades (shift_shade): Early is
+     light, Late mid, Full day dark. Red, yellow and green are exact from the
+     Excel plans (Service, Kitchen, Driver), never re-tint them. The dark shades
+     keep the cells' black text readable. Read them through lib/palette.ts. */
+  --palette-red-early: #fe958c;
+  --palette-red-late: #fe644d;
+  --palette-red-full: #e4210e;
+  --palette-orange-early: #ffc08a;
+  --palette-orange-late: #ff9442;
+  --palette-orange-full: #f26b0f;
+  --palette-yellow-early: #fff056;
+  --palette-yellow-late: #feae09;
+  --palette-yellow-full: #f17206;
+  --palette-lime-early: #dcf86a;
+  --palette-lime-late: #bfe42a;
+  --palette-lime-full: #93bb0b;
+  --palette-green-early: #88f94f;
+  --palette-green-late: #61d735;
+  --palette-green-full: #1ca30c;
+  --palette-teal-early: #71fbe9;
+  --palette-teal-late: #35dcc6;
+  --palette-teal-full: #11a998;
+  --palette-sky-early: #9fdcff;
+  --palette-sky-late: #54c3fe;
+  --palette-sky-full: #1f9be0;
+  --palette-blue-early: #a9c4ff;
+  --palette-blue-late: #6f9bff;
+  --palette-blue-full: #3d72f5;
+  --palette-indigo-early: #bfb8ff;
+  --palette-indigo-late: #9488ff;
+  --palette-indigo-full: #6c5cf0;
+  --palette-purple-early: #e1b2ff;
+  --palette-purple-late: #c47dff;
+  --palette-purple-full: #a24df0;
+  --palette-pink-early: #fe91c5;
+  --palette-pink-late: #fe45a2;
+  --palette-pink-full: #e0197f;
+  --palette-brown-early: #e8c9a8;
+  --palette-brown-late: #d09a68;
+  --palette-brown-full: #ad6f3a;
+
+  /* Shift states (exact from the Excel plans, never re-tint) */
+  --shift-mixed: #fd94c9;
+  --shift-none: #000000;
+  --shift-blocked: #5e5e5e;
+  --shift-closed: #929292;
+  --shift-open: #72fce8;
+
+  /* Schedule */
+  --schedule-ink: #000000;
+  --schedule-grid: #bdbdbd;
+  --schedule-frame: #4a4a4a;
+  --schedule-row-height: 28px;
+  --schedule-day-width: 120px;
+  --schedule-name-width: 136px;
+  --schedule-restaurant-width: 112px;
+
+  /* Elevation */
+  --shadow-menu: 0 8px 24px rgba(17, 17, 17, 0.16),
+    0 0 0 1px rgba(17, 17, 17, 0.08);
+  --shadow-panel: 0 16px 48px rgba(17, 17, 17, 0.2);
+
+  /* Spacing (4px steps) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Layout */
+  --sidebar-width: 256px;
+  --control-height: 40px;
+  --control-height-lg: 48px;
+  --control-height-sm: 32px;
+
+  /* Type */
+  --font-sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

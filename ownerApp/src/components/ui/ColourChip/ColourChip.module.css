@@ -1,0 +1,14 @@
+.chip {
+  display: inline-flex;
+  flex: none;
+  width: 24px;
+  height: 16px;
+  overflow: hidden;
+  vertical-align: middle;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-sm);
+}
+
+.stripe {
+  flex: 1;
+}

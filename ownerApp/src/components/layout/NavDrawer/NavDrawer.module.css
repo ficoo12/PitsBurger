@@ -1,0 +1,86 @@
+/* Full height on the left edge, as wide as the desktop sidebar but leaving a
+   strip of the dimmed page to tap. The <dialog> has no padding, so a click on
+   it (not on the panel inside) is a click on the backdrop. */
+.drawer {
+  inset: 0 auto 0 0;
+  width: min(var(--sidebar-width), calc(100% - var(--space-12)));
+  max-width: none;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  color: inherit;
+  background: var(--surface);
+  border: 0;
+  box-shadow: var(--shadow-panel);
+  animation: slideIn 200ms ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Dims the page behind the menu; a click on it closes the menu. */
+.drawer::backdrop {
+  background: rgba(17, 17, 17, 0.5);
+}
+
+/* The page behind an open menu doesn't scroll. */
+:global(html):has(.drawer[open]) {
+  overflow: hidden;
+}
+
+/* Laid out like the desktop sidebar: logo, links, and the footer at the bottom. */
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-height: 100%;
+  padding: var(--space-6) var(--space-4);
+}
+
+/* Top right, level with the logo. */
+.close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.close:hover {
+  background: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer {
+    animation: none;
+  }
+}
