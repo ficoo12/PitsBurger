@@ -1,0 +1,45 @@
+.alert {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+}
+
+.alert svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 2px;
+}
+
+.title {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.detail {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.error {
+  background: var(--brand-red-tint);
+  color: var(--brand-red-hover);
+}
+
+.success {
+  background: var(--success-tint);
+  color: var(--success);
+}
+
+.neutral {
+  background: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.neutral svg {
+  color: var(--ink-muted);
+}

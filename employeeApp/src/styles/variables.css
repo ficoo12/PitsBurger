@@ -1,0 +1,83 @@
+/* Design tokens from the design system (tokens.json). Everything else reads them with var(--name). */
+
+:root {
+  /* Colour */
+  --brand-red: #d0121b;
+  --brand-red-hover: #a80e15;
+  --brand-red-tint: #fdeced;
+  --brand-black: #111111;
+  --surface-page: #f5f4f2;
+  --surface: #ffffff;
+  --surface-sunken: #efedea;
+  --border: #e2dfdb;
+  --border-control: #8a8580;
+  --ink: #111111;
+  --ink-muted: #5d5854;
+  --ink-inverse: #ffffff;
+  --success: #18733a;
+  --success-tint: #e6f4ea;
+
+  /* Shift colours (exact from the Excel plans, never re-tint) */
+  --shift-service-frueh: #fe958c;
+  --shift-service-spaet: #fe644d;
+  --shift-service-ganz: #e4210e;
+  --shift-kitchen-frueh: #fff056;
+  --shift-kitchen-spaet: #feae09;
+  --shift-kitchen-ganz: #f17206;
+  --shift-driver-frueh: #88f94f;
+  --shift-driver-spaet: #61d735;
+  --shift-driver-ganz: #1ca30c;
+  --shift-mixed: #fd94c9;
+  --shift-none: #000000;
+  --shift-blocked: #5e5e5e;
+  --shift-closed: #929292;
+  --shift-open: #72fce8;
+
+  /* Schedule */
+  --schedule-ink: #000000;
+  --schedule-grid: #bdbdbd;
+  --schedule-frame: #4a4a4a;
+  --schedule-row-height: 28px;
+  --schedule-day-width: 120px;
+  --schedule-name-width: 136px;
+  --schedule-restaurant-width: 112px;
+
+  /* Restaurants */
+  --restaurant-riverside-top: #71fbe9;
+  --restaurant-riverside-bottom: #54c3fe;
+  --restaurant-harbour-top: #82f74b;
+  --restaurant-harbour-bottom: #25b404;
+  --restaurant-wendlingen-top: #feed52;
+  --restaurant-wendlingen-bottom: #feaf00;
+  --restaurant-stuttgart-top: #fe91c5;
+  --restaurant-stuttgart-bottom: #fe45a2;
+
+  /* Elevation */
+  --shadow-menu: 0 8px 24px rgba(17, 17, 17, 0.16),
+    0 0 0 1px rgba(17, 17, 17, 0.08);
+  --shadow-panel: 0 16px 48px rgba(17, 17, 17, 0.2);
+
+  /* Spacing (4px steps) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Layout */
+  --sidebar-width: 256px;
+  --control-height: 40px;
+  --control-height-lg: 48px;
+  --control-height-sm: 32px;
+
+  /* Type */
+  --font-sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

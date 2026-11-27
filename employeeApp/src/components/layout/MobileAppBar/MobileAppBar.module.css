@@ -1,0 +1,84 @@
+/* 56px, white, hairline under it. Spans the screen; its content stays in the
+   same 480px column as the page below. */
+.bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 480px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.logo {
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.who {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.who strong {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.who span {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* A red text button with a 48px tap height. */
+.logout {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: var(--control-height-lg);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--brand-red);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.logout:hover:not(:disabled) {
+  color: var(--brand-red-hover);
+}
+
+.logout:disabled {
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
+.logout:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+.logout svg {
+  width: 16px;
+  height: 16px;
+}

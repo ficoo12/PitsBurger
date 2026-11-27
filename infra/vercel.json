@@ -1,0 +1,40 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "backend",
+      "framework": "express",
+      "entrypoint": "src/app.ts",
+      "buildCommand": "npm run typecheck"
+    },
+    "employeeapp": {
+      "root": "employeeApp",
+      "framework": "vite",
+      "outputDirectory": "dist",
+      "rewrites": [
+        {
+          "source": "/employee/((?!@|src/|node_modules/)[^.]*)",
+          "destination": "/employee/index.html"
+        }
+      ]
+    },
+    "ownerapp": {
+      "root": "ownerApp",
+      "framework": "vite",
+      "rewrites": [
+        {
+          "source": "/((?!@|src/|node_modules/)[^.]*)",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  },
+  "redirects": [
+    { "source": "/employee", "destination": "/employee/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": { "service": "backend" } },
+    { "source": "/employee/(.*)", "destination": { "service": "employeeapp" } },
+    { "source": "/(.*)", "destination": { "service": "ownerapp" } }
+  ]
+}

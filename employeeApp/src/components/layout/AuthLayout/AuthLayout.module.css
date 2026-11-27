@@ -1,0 +1,64 @@
+/* Login page. */
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: var(--space-8) var(--space-4);
+  background: var(--surface-page);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-8);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.title p {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.foot {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--ink-muted);
+}
+
+/* Phones: no card frame, the form uses the whole screen. */
+@media (max-width: 480px) {
+  .page {
+    align-items: stretch;
+    padding: 0;
+    background: var(--surface);
+  }
+
+  .card {
+    max-width: none;
+    padding: var(--space-8) var(--space-4);
+    border: 0;
+    border-radius: 0;
+  }
+}

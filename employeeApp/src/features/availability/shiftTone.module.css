@@ -1,0 +1,23 @@
+/* Fills for a shift value (picker, read-only value, summary strip).
+   Set data-tone to a ShiftTone (shiftTone.ts). */
+
+.tone[data-tone] {
+  color: var(--schedule-ink);
+}
+
+/* A shift without a plan colour: white with a 2px dark ring. */
+.tone[data-tone="plain"] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+/* Not available: black, as in the plans. */
+.tone[data-tone="none"] {
+  background: var(--shift-none);
+  color: var(--ink-inverse);
+}
+
+.tone[data-tone="closed"] {
+  background: var(--shift-closed);
+}

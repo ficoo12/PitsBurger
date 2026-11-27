@@ -1,0 +1,64 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: var(--control-height);
+  padding: 0 var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.12s, border-color 0.12s, color 0.12s;
+}
+
+/* Keyboard focus: 2px brand-red outline with a 2px gap. */
+.button:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+.button svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.button:disabled {
+  background: var(--surface-sunken);
+  border-color: transparent;
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--brand-red);
+  color: var(--ink-inverse);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--brand-red-hover);
+}
+
+.secondary {
+  background: var(--surface);
+  color: var(--brand-black);
+  border-color: var(--brand-black);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--surface-sunken);
+}
+
+.lg {
+  height: var(--control-height-lg);
+}
+
+.block {
+  width: 100%;
+}
